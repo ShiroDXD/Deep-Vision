@@ -1,0 +1,12 @@
+  source ~/.profile
+workon cv
+sudo modprobe bcm2835-v4l2 
+#resove select time out
+sudo modprobe uvcvideo nodrop=1 timeout=6000
+#GPIO pins
+pinouts
+Retrain:
+python encode_faces.py --dataset dataset --encodings encodings.pickle --detection-method hog
+
+Launch:
+python pi_face_recognition.py --cascade haarcascade_frontalface_default.xml --encodings encodings.pickle
